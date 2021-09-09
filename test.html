@@ -3,6 +3,21 @@
     <button id="button">button</button>
 </div>
 <script>
-const str = new String(123);
-console.log(str);
+    const a = {};
+    console.log(a.__proto__);
+    console.log(typeof a.__proto__.constructor);
+
+    // Array는 생성자 함수임
+    // Array.prototype은 프로토타입임
+    // 즉, const a = []; 이렇게 선언하면
+    // a의 부모는 Array.prototype이다
+    // a는 Array.prototype의 함수를 모두 상속받음
+
+    // Array자체가 생성자함수기 때문에
+    // 아래 코드와 같이 어딘가에 함수가 정의되어있을 것임
+    function Array() {
+        this.a = a;
+        var slice = function() {
+        };
+    }
 </script>
