@@ -1,7 +1,8 @@
-let a = 1;
-const add = function(a) {
-    console.log(a);
-    return ++a;
+const a = {
+    a: '1',
+    b: '1',
 };
-
-console.log(add(a+=3));
+console.log('a' in a); // true
+console.log('b' in a); // true
+console.log('c' in a); // false
+console.log('toString' in a); // true

@@ -1,6 +1,7 @@
 /**
  * ㅡㅡ핵심키워드
  * 프로토타입, 객체지향, 프로토타입 체인, 내부슬롯, Obejct.prototype
+ * 정적프로퍼티/메서드, 프로퍼티 존재 확인,
  * 
  * ㅡㅡ개요
  * js의 거의 모든것은 객체이다
@@ -102,3 +103,156 @@ console.log(me.__proto__);
 // 표준 빌트인 객체는 전역 객체가 생성되는 시점에 생성됨
 // 객체가 생성되기 이전에 생성자 함수와 프로토타입은 이미 객체화되어 존재함
 // 이후 객체를 생성하면 프로토타입은 생성된 객체의 내부슬롯에 할당됨
+
+// 객체 생성 방식과 프로토타입의 결정
+// 객체 생성 방식은 다양하지만 공통점은 추상연산 OrdinaryObjectCreate에 의해 생성된다
+// 즉 엔진은 객체를 생성할떄 OrdinaryObjectCreate를 호출하고 프로토타입을 파라미터로 던짐
+// 1. 객체 리터럴, new Object(); 
+//    OrdinaryObjectCreate를 호출하면서 Object.prototype을 파라미터로 던지기 때문에
+//    a는 Object.prototype을 프로토타입(부모)로 가지게 되는것
+const a = {};
+// 2. 생성자함수
+//    생성자함수에 의해 생성되는 객체의 프로토타입은 생성자 함수의 prototype 프로퍼티에 바인딩 되있는 객체임
+function Person(name) {
+    this.name = name;
+}
+// p의 프로토타입은 Person.prototype이다
+const p = new Person('lee');
+// 3. Object.create
+// 4. 클래스
+// 등등
+
+
+{ // 프토토타입 체인
+    function Computer(cpu, ram) {
+        this.cpu = cpu;
+        this.ram = ram;
+        this.add = function(...args) {
+            let sum = 0;
+            for(let i=0; i<args.length; i++) {
+                sum += parseInt(args[i]);
+            }
+            return sum;
+        };
+    }
+    
+    // 위에서 말했듯 
+    // 생성자 객체에 의해 생성된 아래 두 객체 amdCom, intelCom은
+    // 동일한 프로토타입 Computer.prototype을 갖는다
+    // 즉 두 객체의 __proto__ 프로퍼티에 프로토타입 참조가 있다(부모의 주소)
+    const amdCom = new Computer('AMD 5600X', '16g');
+    const intelCom = new Computer('INTEL i9', '16g');
+
+    // 당연하게도 아래코드는 수행된다
+    let amdAdd = amdCom.add(1,2,3,4,5);
+    let intelAdd = intelCom.add(1,2);
+
+    console.log(amdAdd); // 15
+    console.log(intelAdd); // 3
+
+    // 하나 더 함수를 사용해보자
+    console.log(amdCom.hasOwnProperty('graphicCard')); // false
+    console.log(intelCom.hasOwnProperty('graphicCard')); // false
+
+    // 위 예제를 보면 amdCom. intelCom 모두 hasOwnProperty를 쓸 수 있다.
+    // 부모가 Computer.prototype인데 어떻게 저 Object.prototype함수를 사용할 수 있을까?
+    // 답은 모든 객체는 체인으로 연결되어 있기 떄문이다
+    // 타고타고 올라가는개념
+    // hasOwnProperty를 사용하게되면 우선적으로 amdCom객체에 해당 함수가 있나 찾아보고
+    // 없다면 __proto__ 프로퍼티를 이용해 프로토타입(부모)에서 함수를 찾는다.
+    // 프로토타입에도 함수가 없다면 프로토타입의 프로토타입에서 함수를 찾는다.
+    // 단 Object.prototype이 종점이다.
+    // 즉 프로토타입 체인이란 상속과 프로퍼티 검색을 위한 매커니즘이다.
+
+    // 오버라이딩과 섀도잉
+    const Person = (function() {
+        function Person(name) {
+            this.name = name;
+        }
+
+        Person.prototype.sayHello = function() {
+            console.log(`hello ${this.name}`);
+        }
+
+        return Person;
+    }());
+
+    const p1 = new Person('lee');
+    p1.sayHello = function() {
+        console.log(`hi ${this.name}`);
+    };
+
+    // 위에서는 Person.prototype에 sayHello를 정의했고
+    // 그 다음 p1 객체(인스턴스)에서 sayHello를 재정의함
+    // 즉 오버라이딩한건데 그럼 프로토타입의 sayHello는 무시?됨
+    // 이것을 프로퍼티가 가려졌다해서 프로퍼티 섀도잉이라함
+    
+    // 이렇게 하면 Person.prototype.sayHello가 호출됨
+    // 프로토타입 체인에 의해
+    delete p1.sayHello;
+}
+
+{ // 정적 프로퍼티 / 메서드
+    const Person = (function(name) {
+        // 앞에 this를 붙이면 Person을 상속받은 객체도 사용 가능
+        function Person(name) {
+            this.name = name;
+            this.sayHello = function() {
+                console.log(`hello ${this.name}`);
+            };
+
+            // this를 빼고 선언하면
+            // 생성자함수객체 자체에서만 사용가능함
+            // 상속받은 객체에서는 사용 불가능
+            staticProp = 'staticProp';
+            staticMethod = function() {
+                console.log('static method');
+            };
+        }
+
+        return Person;
+    }());
+
+    const p1 = new Person('lee');
+    console.log(p1 instanceof Person); // true
+    console.log(p1.staticProp); // undefined
+    
+    // 추가지식 MDN사이트에서 doc볼때
+    // Object.prototype 이렇게 접미사가 있으면 그건 일반 객체에서도 사용 가능한거고
+    // Object.create 이처럼 prototype이 안붙은건 정적메서드라 그런것
+}
+
+{ // 프로퍼티 존재 확인 및 열거
+    const a = {
+        a: '1',
+        b: '1',
+    };
+    console.log('a' in a); // true
+    console.log('b' in a); // true
+    console.log('c' in a); // false
+    console.log('toString' in a); // true
+    //또는
+    console.log(a.hasOwnProperty('a')); // true
+    // ES6
+    console.log(Reflect.has(a, 'a')); 
+
+    // 객체를 열거할떄 for...in
+    // 열거하긴 하지만 프로퍼티 어트리뷰트중 Emumerable true인것만 열거함
+    // a를 열거하면 a의 프로토타입인 toString()은 열거하지 않는데 이유는
+    // toString()의 Emumerable이 false라 그럼
+    // 자신의 고유 프로퍼티만 열거하려면 hasOwnProperty()를 사용하자
+    for (const key in object) {
+        if (Object.hasOwnProperty.call(object, key)) {
+            const element = object[key];
+        }
+    }
+    // 단 배열에는 사용하지 말자
+    // 배열에는 for / for...of / Array.prototype.forEach 사용권장
+
+    // 객체 프로퍼티 키를 배열로 얻기
+    Object.keys(a);
+    // 객체 프로퍼티 값를 배열로 얻기
+    Object.values(a);
+    // [[key1, value1], [key2, value2] ...]
+    Object.entries(a);
+}

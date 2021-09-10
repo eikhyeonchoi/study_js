@@ -3,21 +3,34 @@
     <button id="button">button</button>
 </div>
 <script>
-    const a = {};
-    console.log(a.__proto__);
-    console.log(typeof a.__proto__.constructor);
+function Computer(cpu, ram) {
+	// 간략히 하겠다.
+	this.cpu = cpu;
+    this.ram = ram;
+    this.add = function(...args) {
+    	let sum = 0;
+    	for(let i=0; i<args.length; i++) {
+        	sum += parseInt(args[i]);
+        }
+        return sum;
+    };
+}
 
-    // Array는 생성자 함수임
-    // Array.prototype은 프로토타입임
-    // 즉, const a = []; 이렇게 선언하면
-    // a의 부모는 Array.prototype이다
-    // a는 Array.prototype의 함수를 모두 상속받음
+// 위에서 말했듯 
+// 생성자 객체에 의해 생성된 아래 두 객체 amdCom, intelCom은
+// 동일한 프로토타입 Computer.prototype을 갖는다
+// 즉 두 객체의 __proto__ 프로퍼티에 프로토타입 참조가 있다(부모의 주소)
+const amdCom = new Computer('AMD 5600X', '16g');
+const intelCom = new Computer('INTEL i9', '16g');
 
-    // Array자체가 생성자함수기 때문에
-    // 아래 코드와 같이 어딘가에 함수가 정의되어있을 것임
-    function Array() {
-        this.a = a;
-        var slice = function() {
-        };
-    }
+// 당연하게도 아래코드는 수행된다
+let amdAdd = amdCom.add(1,2,3,4,5);
+let intelAdd = intelCom.add(1,2);
+console.log(amdAdd); // 15
+console.log(intelAdd); // 3
+
+// 하나 더 함수를 사용해보자
+console.log(amdCom.hasOwnProperty('graphicCard'));
+console.log(intelAdd.hasOwnProperty('graphicCard')); //
+
 </script>

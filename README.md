@@ -26,4 +26,3 @@
 >- 일급객체, arguments, Rest Parameter(ES6), 함수의 고유 프로퍼티
 >##### protoType.js
 >- 프로토타입, 객체지향, 프로토타입 체인, 내부슬롯, Obejct.prototype
- * 
