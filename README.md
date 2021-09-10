@@ -25,4 +25,4 @@
 >##### firstClassObject.js
 >- 일급객체, arguments, Rest Parameter(ES6), 함수의 고유 프로퍼티
 >##### protoType.js
->- 프로토타입, 객체지향, 프로토타입 체인, 내부슬롯, Obejct.prototype
+>- 프로토타입, 객체지향, 프로토타입 체인, 내부슬롯, Obejct.prototype, 정적프로퍼티/메서드, 프로퍼티 존재 확인, 프로퍼티 열거, 프로퍼티 다루기
