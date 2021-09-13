@@ -26,3 +26,13 @@
 >- 일급객체, arguments, Rest Parameter(ES6), 함수의 고유 프로퍼티
 >##### protoType.js
 >- 프로토타입, 객체지향, 프로토타입 체인, 내부슬롯, Obejct.prototype, 정적프로퍼티/메서드, 프로퍼티 존재 확인, 프로퍼티 열거, 프로퍼티 다루기
+>##### builtInObject.js
+>- 빌트인객체, 빌트인객체, 래퍼객체, 전역객체
+>##### this.js
+>- this, Function.prototype.(call, apply, bind)
+>##### executionContext.js
+>- 실행컨텍스트, 실행컨텍스트스택, 렉시컬환경, 환경레코드, 외부렉시컬환경참조, 객체환경레코드, 선언환경레코드, 블록레벨스코프, 스코프체인, Environment
+>##### executionContext.js
+>- 실행컨텍스트, 실행컨텍스트스택, 렉시컬환경, 환경레코드, 외부렉시컬환경참조, 객체환경레코드, 선언환경레코드, 블록레벨스코프, 스코프체인, Environment
+>##### closure.js
+>- 클로저, 렉시컬스코프, Environment
