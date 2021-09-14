@@ -32,7 +32,11 @@
 >- this, Function.prototype.(call, apply, bind)
 >##### executionContext.js
 >- 실행컨텍스트, 실행컨텍스트스택, 렉시컬환경, 환경레코드, 외부렉시컬환경참조, 객체환경레코드, 선언환경레코드, 블록레벨스코프, 스코프체인, Environment
->##### executionContext.js
->- 실행컨텍스트, 실행컨텍스트스택, 렉시컬환경, 환경레코드, 외부렉시컬환경참조, 객체환경레코드, 선언환경레코드, 블록레벨스코프, 스코프체인, Environment
 >##### closure.js
 >- 클로저, 렉시컬스코프, Environment
+>##### class.js
+>- 클래스, 메서드, constructor, 인스턴스 생성과정, extends, 프로토타입 메서드, 정적 메서드, 수퍼클래스, 서브클래스, this, super
+>##### es6Function.js
+>- ES6, 화살표함수, rest파라미터
+>##### array.js
+>- 

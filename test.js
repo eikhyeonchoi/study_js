@@ -12,20 +12,18 @@
 // }
 // console.log(bar()); // undeined;
 
-// 클로저 예제 02
-// 클로저 예제 02
-function counter(callbackFunc) {
-    let num = 0;
-    return function() {
-        num = callbackFunc(num);
-        return num;
-    };
+class Prefixer {
+	constructor(prefix) {
+		this.prefix = prefix;
+	}
+
+	add(arr) {
+		return arr.map(function(item) {
+			console.log(this);
+			return this.prefix + item;
+		});
+	}
 }
 
-const increaser = counter(function(n) {
-    return ++n;
-
-});
-console.log(increaser());
-console.log(increaser());
-console.log(increaser());
+const pre = new Prefixer("prefix_word");
+console.log(pre.add(['aaa', 'bbb'])); // 
