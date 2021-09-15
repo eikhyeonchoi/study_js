@@ -12,18 +12,23 @@
 // }
 // console.log(bar()); // undeined;
 
-class Prefixer {
-	constructor(prefix) {
-		this.prefix = prefix;
-	}
+const f = function(max) {
+    let [pre, cur] = [0,1];
 
-	add(arr) {
-		return arr.map(function(item) {
-			console.log(this);
-			return this.prefix + item;
-		});
-	}
+    return {
+        [Symbol.iterator]() {
+            return this;
+        },
+        next() {
+            [pre,cur] = [cur, pre+cur];
+            return {value: cur, done: cur >= max};
+        }
+    };
+};
+
+let iter = f(10);
+console.log(iter);
+
+for (const aaa of iter) {
+    console.log(aaa);
 }
-
-const pre = new Prefixer("prefix_word");
-console.log(pre.add(['aaa', 'bbb'])); // 

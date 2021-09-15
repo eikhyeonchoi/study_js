@@ -39,4 +39,24 @@
 >##### es6Function.js
 >- ES6, 화살표함수, rest파라미터
 >##### array.js
->- 
+>- Array, 스프레드문법
+>##### number.js
+>- Number
+>##### math.js
+>- Math
+>##### date.js
+>- Date
+>##### regexp.js
+>- 정규식
+>##### string.js
+>- String
+>##### symbol.js
+>- Symbol
+>##### iterable.js
+>- 이터러블, 이터러블 프로토콜, 이터레이터 프로토콜, 스프레드문법, 배열디스트럭처링할당
+>##### spread.js
+>- 스프레드 문법, Rest 파라미터와의 구분
+>##### distructuring.js
+>- 디스트럭처링할당
+>##### rendering.js
+>- 렌더링
