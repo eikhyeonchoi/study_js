@@ -1,14 +1,17 @@
-<div>
-    gg
-    <button id="button">button</button>
-</div>
+<ul id='fruits'>
+    <li id="apple">apple</li>
+    <li id="banana">banana</li>
+    <li id="orange">orange</li>
+</ul>
 <script>
-function abc(...args) {
-    return args.forEach(element => {
-		console.log(this);
-        return element;
-    });
-}
+    const $fruits = document.getElementById('fruits');
+    function active(event) {
+        console.log(event);
+        // if(!target.matches('#fruits > li')) return;
+        // [...$fruits.children].forEach(function(f) {
+        //     f.classList.toggle('active', f === target);
+        // });
+    }
 
-abc(1,2,3,4);
+    $fruits.onclick = active;
 </script>
