@@ -12,23 +12,19 @@
 // }
 // console.log(bar()); // undeined;
 
-const f = function(max) {
-    let [pre, cur] = [0,1];
+let squareRes = 0;
+let callbackRes = 0;
 
-    return {
-        [Symbol.iterator]() {
-            return this;
-        },
-        next() {
-            [pre,cur] = [cur, pre+cur];
-            return {value: cur, done: cur >= max};
-        }
-    };
-};
-
-let iter = f(10);
-console.log(iter);
-
-for (const aaa of iter) {
-    console.log(aaa);
+function square(target, func) {
+	let res = target ** 2;
+    console.log(res);
+    func(res);
+    return res;
 }
+
+squareRes = square(2, function(res) {
+    console.log(res);
+    callbackRes = res += 10;
+});
+
+
