@@ -12,19 +12,11 @@
 // }
 // console.log(bar()); // undeined;
 
-let squareRes = 0;
-let callbackRes = 0;
-
-function square(target, func) {
-	let res = target ** 2;
-    console.log(res);
-    func(res);
-    return res;
-}
-
-squareRes = square(2, function(res) {
-    console.log(res);
-    callbackRes = res += 10;
-});
-
+let value = 0;
+const timeout = setTimeout(function() {
+    return new Promise((resolve, reject) => {
+        resolve(100);
+    });
+}, 1000);
+console.log(timeout);
 
