@@ -4,14 +4,17 @@
     <li id="orange">orange</li>
 </ul>
 <script>
-    const $fruits = document.getElementById('fruits');
-    function active(event) {
-        console.log(event);
-        // if(!target.matches('#fruits > li')) return;
-        // [...$fruits.children].forEach(function(f) {
-        //     f.classList.toggle('active', f === target);
-        // });
+    function three() {
+        console.log("three");
     }
-
-    $fruits.onclick = active;
+    function two() {
+        three();
+    }
+    function one() {
+        two();
+    }
+    function zero() {
+        one();
+    }
+    zero();
 </script>
