@@ -1,0 +1,21 @@
+
+container(상위노드 적용 옵션) {
+    display: flex;
+    flex-direction: ;                  // flex정렬 방향
+    flex-direction: wrap;              // default: nowrap, wrap할시 창이 줄어들면 아이템들이 떨어짐
+    justify-items: center;             // 양옆 정렬
+    align-items: center;               // 위아래 정렬
+}
+
+item(하위노드 적용옵션) {
+    flex-basis: 0;                     // default: auto, 오토면 여백을 나눠갖음, 0이면 원래 점유하는 공간을 0으로한다는의미 쉽게말하면 0으로하면 잘 나눠짐
+    flex-grow: 1;                      // 남은 여백을 나눠갖는다는 의미임, nth를 적용해 각 아이템마다 남은 여백 비율 다르게 적용할 수 있음
+
+    // 위 2개 합친게 
+    flex: 1;                           // 내부적으로 flex-basis: 0;을 넣어줌
+
+    nth-child(2) {
+        flex: 1;  // nth를 적용해 특정 아이템만 flex할 수 있음, 예를들면 첫번째 항목은 px고정하고 2번째는 창 늘려도 커지게 한다는 둥 이렇게;
+        order: 1; // 순서를 정할 수도 있음
+    }
+}

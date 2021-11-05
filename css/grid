@@ -1,0 +1,24 @@
+
+container(상위노드 적용 옵션) {
+    display: grid;
+    grid-template-columns: 5fr 5fr;        // fr로하면 스크롤이 생기지 않음, 갯수만큼이 컬럼 갯수임 2개니깐 컬럼도 2개
+    grid-template-columns: 100px 5fr;      // px로 고정하면 화면을 늘려도 고정넓이를 가짐
+    grid-template-columns: repeat(2, 5fr); // 상동
+
+    grid-auto-rows: 300px;                 // 각 아이템의 높이 맞춤
+    grid-auto-rows: minmax(200px, auto);   // 최소 200px확보 후 더 높다면 auto
+
+    justify-items: center;                 // 양옆 정렬
+    align-items: center;                   // 위아래 정렬
+
+    grid-gap: 1rem;                        // 아이템 사이 간격을 의미
+}
+
+item(하위노드 적용옵션) {
+    // grid 레이아웃에서 특정 항목 크기 조절
+    // grid 아웃에서 나눠진 부분이 축(?)임
+    grid-columns: n/n;                     // 분수가 아니라 n축부터 n축까지 차지하게 해달 (컬럼)
+    grid-columns: n;                       // n번축에 고정
+    grid-row: n/n;                         // 분수가 아니라 n축부터 n축까지 차지하게 해달 (로우)
+
+}
