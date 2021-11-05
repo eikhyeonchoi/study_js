@@ -85,11 +85,9 @@ console.log(typeof str, str); // string 10
 
     // ES11 null병합
     var foo = '' || 'default'; // 'default'
-    // 좌항이 null or undefined일때만(Falsy가아님) 우항return
     var foo = '' ?? 'default'; // ''
-    // 0또는 ''이 유효한 값이라면
-    // 단축평가보단 null병합을 사용해야함
-    // Falsy 값을 다 버리고싶다면 단축평가사용
+    // Falsy 값을 다 무시하고 싶다면 || 
+    // null or undefined만 무시하고 싶다면 &&
 
     // 2. 함수 매개변수 기본값 설정
     function getStringLength(str) {
@@ -100,6 +98,4 @@ console.log(typeof str, str); // string 10
     function getStringLength(str='') {
         return str.length;
     }
-
-
 }
