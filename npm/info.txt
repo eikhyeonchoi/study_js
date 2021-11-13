@@ -1,0 +1,22 @@
+초기화 : npm init -y
+    옵션
+        -y
+
+설치   : npm install [라이브러리]
+    옵션
+        --save-prod: 기본값, 지역설치 node_modules 폴더 밑 설치
+        --global   : 전역설치(window 기준 경로 %USERPROFILE%\AppData\Roaming\npm\node_modules), 시스템레벨에 전역으로 설치
+        --save-dev : devDependencies
+        -D         : --save-dev와 동일
+
+삭제   : npm uninstall [라이브러리]
+
+※ dependencies vs devDependencies
+npm i []    : devDependencies에 설치됨
+npm i [] -D : devDependencies에 설치됨
+앱 로직과 연관된 라이브러리는 dependencies에 설치
+개발 보조 라이브러리의 경우는 -D 옵션을 devDependencies에 설치
+빌드(npm run build)를 하게되면 dependencies의 라이브러리는 배포됨(최종 애플리케이션의 코드안에 포함됨)
+빌드(npm run build)를 하게되면 devDependencies의 라이브러리는 배포되지 않음(최종 애플리케이션의 코드안에 포함X)
+
+
