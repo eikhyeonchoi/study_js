@@ -1,0 +1,47 @@
+
+container(상위노드 적용 옵션) {
+    display: flex;
+
+    flex-direction: 정렬방향
+        (default: row) [row|row-reverse|column|colum-reverse];
+
+    flex-wrap: 하위 요소들을 wrap할건지 여부 wrap할시 크기가 작아지면 아래로 떨어짐
+        (default: no-wrap) [no-wrap|wrap|wrap-reverse];
+
+    flex-flow: direction과 wrap을 한번에 작성가능
+        ex) row wrap, column no-wrap 등
+
+    justify-content: 중심축에서 어떻게 배치할것인지 
+        [flex-start|flex-end|center|space-around|space-evenly|space-between 등];
+
+    align-items: 반대축에서 어떻게 배치할것인지 
+        [flex-start|flex-end|center|space-around|space-evenly|space-between|base-line 등];
+
+    align-content: 반대축에서의 justify-content라고 보면됨, flex-wrap이 no-wrap이면 어차피 한줄이라 이 옵션이 의미가없음
+        [justify-content와 동일];
+}
+
+item(하위노드 적용옵션) {
+    order: 아이템의 순서변경(안씀)
+        [숫자];
+
+    flex-grow: 화면이 커졌을때 (부모)영역에 꽉차도록 크기를 조정한다, 클수록 더 많이 늘어남
+        (default: 0) [숫자];
+
+    flex-shrink: 화면이 작아졌을 때 얼만큼 줄어들건지, 클수록 더 많이 줄어듬
+        (default: 0) [숫자];
+
+    flex-basis: 얼만큼 차지할건지
+        (default: 0) [숫자%,px,em,rem등];
+
+    align-self: 배치
+        [];
+
+    flex: flex-grow, flex-shrink, flex-basis의 축약형
+            1: 1 1 0%
+            1 auto: 1 1 auto
+            1 500px: 1 1 500px
+
+       [];
+
+}

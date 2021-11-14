@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>JS Bin</title>
+  <style>
+        /* http://meyerweb.com/eric/tools/css/reset/ 
+        v2.0 | 20110126
+        License: none (public domain)
+        */
+        html, body, div, span, applet, object, iframe,
+        h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+        a, abbr, acronym, address, big, cite, code,
+        del, dfn, em, img, ins, kbd, q, s, samp,
+        small, strike, sub, sup, tt, var,
+        b, u, i, center,
+        dl, dt, dd, ol, ul, li,
+        fieldset, form, label, legend,
+        table, caption, tbody, tfoot, thead, tr, th, td,
+        article, aside, canvas, details, embed, 
+        figure, figcaption, footer, header, hgroup, 
+        menu, nav, output, ruby, section, summary,
+        time, mark, audio, video {
+            margin: 0;
+            padding: 0;
+            border: 0;
+            font-size: 100%;
+            font: inherit;
+            vertical-align: baseline;
+        }
+        strong {
+            vertical-align: middle;
+        }
+        /* HTML5 display-role reset for older browsers */
+        article, aside, details, figcaption, figure, 
+        footer, header, hgroup, menu, nav, section {
+            display: block;
+        }
+        body {
+            line-height: 1;
+            background: white;
+        }
+        ol, ul {
+            list-style: none;
+        }
+        blockquote, q {
+            quotes: none;
+        }
+        blockquote:before, blockquote:after,
+        q:before, q:after {
+            content: '';
+            content: none;
+        }
+        table {
+            border-collapse: collapse;
+            border-spacing: 0;
+        }
+        .container {
+            width: 100%;
+            padding: 10px;
+        }
+        .section {
+            background: white;
+            margin-bottom: 30px;
+            padding: 0px 30px;
+        }
+        .header {
+            display: flex;
+            align-items: center;
+            margin-top: 35px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid black;
+        }
+        .header > h1 {
+            margin-right: 20px;
+            font-size: 24px;
+            font-weight: 600;
+        }
+        .header > h1 > span {
+            color: gray;
+        }
+        button {
+            border: 1px solid #e5e5e5;
+            background: white;
+            font-size: 14px;
+            padding: 5px 5px;
+        }
+        .table {
+            width: 100%;
+        }
+        .table tr {
+            border-bottom: 1px solid #e5e5e5;
+        }
+        .table th {
+            text-align: left;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            vertical-align: middle;
+        }
+        .table td {
+            padding-top: 10px;
+            padding-bottom: 10px;
+            vertical-align: middle;
+        }
+        .table .certify {
+          font-size: 12px;
+          color: #14aaff;
+          vertical-align: middle;
+          margin-left: 10px;
+        }
+
+        .bottom-section {
+          display: flex;
+        }
+
+        .bottom-section .left,
+        .bottom-section .right {
+          width: 50%;
+          padding-right:10px;
+          padding-left:10px;
+        }
+
+        .radio-tab {
+          position: relative;
+          padding: 10px 0 10px 167px;
+        }
+
+        .radio-tab em {
+          position: absolute;
+          top: 14px;
+          left: 0;
+          line-height: 21px;
+        }
+        .radio-tab input {
+          display: block;
+          position: absolute;
+          overflow: hidden;
+          width: 1px;
+          height: 1px;
+          margin: -1px;
+          clip: rect(0 0 0 0);
+        }
+        .radio-tab input+label {
+          border: 1px solid #e5e5e5;
+          padding: 5px 15px;
+          width: 50px;
+          height: 100px;
+
+        }
+</style>
+</head>
+<body>
+  <div class="container">
+    <section class='section'>
+      <header class='header'>
+        <h1>기본 회원정보 <span>필수</span></h1>
+        <button>가려진정보 보기</button>
+      </header>
+      <table class="table">
+        <colgroup>
+           <col width="160px"/>
+           <col width="*"/>
+           <col width=""/>
+        </colgroup>
+        <tbody>
+          <tr>
+            <th>아이디</th>
+            <td colspan='2'><strong>아이디</strong></td>
+            <td>
+            </td>
+          </tr>
+          <tr>
+            <th>비밀번호</th>
+            <td><strong>********</strong></td>
+            <td>
+              <div>
+                <button>
+                  비밀번호 변경
+                </button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <th>이름(실명)</th>
+            <td>
+              <strong>최*현</strong>
+              <span class="certify">인증완료</span>
+            </td>
+            <td>
+              <div>
+                <button>이름수정</button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <th>닉네임</th>
+            <td>
+              <strong>익콩이</strong>
+            </td>
+            <td>
+              <div>
+                <button>닉네임변경</button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <th>이메일</th>
+            <td>
+              <strong>eikhye@adsd.colm</strong>
+            </td>
+            <td>
+              <div>
+                <button>이메일변경</button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <th>휴대전화</th>
+            <td>
+              <strong>01032220284</strong>
+            </td>
+            <td>
+              <div>
+                <button>휴대전화변경</button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <div class="bottom-section">
+      <section class="left">
+        <div class="my-social-info">
+          <header class='header'>
+            <h1>소셜로그인 연동</h1>
+          </header>
+          <div>
+            <ul>
+              <li class="radio-tab">
+                <em>카카오로그인연동</em>
+                <input type="checkbox" id='onkakao'>
+                <label for="onkakao">ON</label>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <section class="bottom">
+          <header class='header'>
+            <h1>수신 설정</h1>
+          </header>
+        </section>
+      </section>
+      
+      <section class="right">
+        <header class='header'>
+          <h1>자기소개</h1>
+        </header>
+      </section>
+    </section>
+  </div>
+</body>
+</html>

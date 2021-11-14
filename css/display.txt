@@ -1,9 +1,19 @@
 ㅡ display:
-block;        // 부모크기만큼 공간차지, 알아서 꽉참 굳이 width: 100%를 주지 말자 
-inline;       // 크기조절 불가 내용만큼 공간차지
-inline-block; // inline + block 당연히 크기 조정 가능
+기본적으로 div는 block, span은 inline;
+block;        // 한줄 한개밖에 진열 못하는 상자, 에부모크기만큼 공간차지, 알아서 꽉참 굳이 width: 100%를 주지 말자 
+inline;       // 물건, 크기조절 불가 내용만큼 공간차지
+inline-block; // 한줄에 여러개 진열될 수 있는 상자, block 단위로 width, height 맞춰서 한 줄에 여러개 가능, 당연히 크기 조정 가능
 // 공백문자도 공간을 차지하기 때문에(코드 보기 좋게 인덴트 작업할 때 개행 넣는 것)
 // 이 공백문자를 없애려면 font-size:0을 따로 넣어줘야함
+
+
+
+ㅡ position: (default: static)
+relative : 원래 아이템이 있어야하는 자리에서 상대적으로 옮겨감
+absolute: 부모 노드 기준으로 절대값으로 움직임
+fixed: window(=페이지)에서 움직이는 것
+sticky: relative면서 스크롤링해도 고정되어있는 것
+
 
 
 ㅡ box-sizing: (default: content-box)
